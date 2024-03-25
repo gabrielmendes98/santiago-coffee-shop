@@ -1,9 +1,9 @@
 package com.santiagocoffeeshop.entity.beverage;
 
-public class Espresso extends Beverage {
+public class Espresso implements Beverage {
 
     public Espresso() {
-        this.description = "Espresso";
+
     }
 
     @Override
@@ -13,6 +13,6 @@ public class Espresso extends Beverage {
 
     @Override
     public String getDescription() {
-        return this.description;
+        return "Espresso";
     }
 }

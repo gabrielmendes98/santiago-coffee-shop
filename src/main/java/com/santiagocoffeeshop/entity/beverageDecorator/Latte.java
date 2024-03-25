@@ -4,10 +4,9 @@ import com.santiagocoffeeshop.entity.beverage.Beverage;
 
 public class Latte extends BeverageDecorator {
     private static final double LatteAddonPrice = 0.9;
-    Beverage beverage;
 
     public Latte(Beverage beverage) {
-        this.beverage = beverage;
+        super(beverage);
     }
 
     @Override

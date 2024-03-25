@@ -1,8 +1,8 @@
 package com.santiagocoffeeshop.entity.beverage;
 
-public class Americano extends Beverage {
+public class Americano implements Beverage {
+
     public Americano() {
-        this.description = "Americano";
     }
 
     @Override
@@ -12,6 +12,6 @@ public class Americano extends Beverage {
 
     @Override
     public String getDescription() {
-        return this.description;
+        return "Americano";
     }
 }

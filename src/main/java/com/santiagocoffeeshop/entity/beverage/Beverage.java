@@ -1,9 +1,7 @@
 package com.santiagocoffeeshop.entity.beverage;
 
-public abstract class Beverage {
-    public String description;
+public interface Beverage {
+    String getDescription();
 
-    abstract public String getDescription();
-
-    abstract public double getPrice();
+    double getPrice();
 }
