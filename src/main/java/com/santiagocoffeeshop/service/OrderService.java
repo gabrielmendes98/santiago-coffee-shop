@@ -18,6 +18,10 @@ public class OrderService {
     }
 
     public OrderResponseDTO createOrder(OrderRequestDTO order) {
+        if (order == null) {
+            return null;
+        }
+
         Order newOrder = new Order();
         newOrder.setTableNumber(order.getTableNumber());
 

@@ -8,6 +8,16 @@ public class OrderResponseDTO {
     private Integer tableNumber;
     private Double totalPrice;
 
+    public OrderResponseDTO(List<OrderItemResponseDTO> orderItems, String message, Integer tableNumber, Double totalPrice) {
+        this.orderItems = orderItems;
+        this.message = message;
+        this.tableNumber = tableNumber;
+        this.totalPrice = totalPrice;
+    }
+
+    public OrderResponseDTO() {
+    }
+
     public List<OrderItemResponseDTO> getOrderItems() {
         return orderItems;
     }

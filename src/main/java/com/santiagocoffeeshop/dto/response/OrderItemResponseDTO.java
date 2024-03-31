@@ -5,6 +5,14 @@ public class OrderItemResponseDTO {
 
     private String description;
 
+    public OrderItemResponseDTO(Double price, String description) {
+        this.price = price;
+        this.description = description;
+    }
+
+    public OrderItemResponseDTO() {
+    }
+
     public Double getPrice() {
         return price;
     }

@@ -3,7 +3,7 @@ package com.santiagocoffeeshop.entity.beverageDecorator;
 import com.santiagocoffeeshop.entity.beverage.Beverage;
 
 public class Chocolate extends BeverageDecorator {
-    private static final double ChocolateAddonPrice = 1.5;
+    public static final double ChocolateAddonPrice = 1.5;
 
     public Chocolate(Beverage beverage) {
         super(beverage);
