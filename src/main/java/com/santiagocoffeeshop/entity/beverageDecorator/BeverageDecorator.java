@@ -2,7 +2,7 @@ package com.santiagocoffeeshop.entity.beverageDecorator;
 
 import com.santiagocoffeeshop.entity.beverage.Beverage;
 
-public class BeverageDecorator implements Beverage {
+public abstract class BeverageDecorator implements Beverage {
     protected Beverage beverage;
 
     public BeverageDecorator(Beverage beverage) {
@@ -11,12 +11,12 @@ public class BeverageDecorator implements Beverage {
 
     @Override
     public String getDescription() {
-        return this.beverage.getDescription();
+        return beverage.getDescription();
     }
 
     @Override
     public double getPrice() {
-        return this.beverage.getPrice();
+        return beverage.getPrice();
     }
 
 }

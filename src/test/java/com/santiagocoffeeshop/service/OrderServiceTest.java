@@ -4,7 +4,6 @@ import com.santiagocoffeeshop.dto.request.OrderItemRequestDTO;
 import com.santiagocoffeeshop.dto.request.OrderRequestDTO;
 import com.santiagocoffeeshop.dto.response.OrderResponseDTO;
 import com.santiagocoffeeshop.entity.beverage.Americano;
-import com.santiagocoffeeshop.entity.beverageDecorator.Chocolate;
 import com.santiagocoffeeshop.enums.BeverageTypeEnum;
 import com.santiagocoffeeshop.enums.ToppingTypeEnum;
 import org.junit.jupiter.api.Test;
@@ -23,11 +22,11 @@ public class OrderServiceTest {
         OrderItemRequestDTO orderItemRequestDTO = new OrderItemRequestDTO();
 
         double americanoPrice = new Americano().getPrice();
-        double toppingPrice = Chocolate.ChocolateAddonPrice;
+        double toppingPrice = ToppingTypeEnum.CHOCOLATE.getPrice();
         double expectedTotalPrice = americanoPrice + toppingPrice;
 
         orderItemRequestDTO.setItem(BeverageTypeEnum.AMERICANO);
-        orderItemRequestDTO.setTopping(ToppingTypeEnum.CHOCOLATE);
+        orderItemRequestDTO.setToppings(Collections.singletonList(ToppingTypeEnum.CHOCOLATE));
 
         orderRequestDTO.setTableNumber(1);
         orderRequestDTO.setOrderItems(Collections.singletonList(orderItemRequestDTO));

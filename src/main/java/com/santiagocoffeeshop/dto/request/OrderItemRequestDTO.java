@@ -3,9 +3,11 @@ package com.santiagocoffeeshop.dto.request;
 import com.santiagocoffeeshop.enums.BeverageTypeEnum;
 import com.santiagocoffeeshop.enums.ToppingTypeEnum;
 
+import java.util.List;
+
 public class OrderItemRequestDTO {
     private BeverageTypeEnum item;
-    private ToppingTypeEnum topping;
+    private List<ToppingTypeEnum> toppings;
 
     public BeverageTypeEnum getItem() {
         return item;
@@ -15,11 +17,11 @@ public class OrderItemRequestDTO {
         this.item = item;
     }
 
-    public ToppingTypeEnum getTopping() {
-        return topping;
+    public List<ToppingTypeEnum> getToppings() {
+        return toppings;
     }
 
-    public void setTopping(ToppingTypeEnum topping) {
-        this.topping = topping;
+    public void setToppings(List<ToppingTypeEnum> toppings) {
+        this.toppings = toppings;
     }
 }

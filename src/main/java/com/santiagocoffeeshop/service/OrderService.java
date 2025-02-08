@@ -1,5 +1,6 @@
 package com.santiagocoffeeshop.service;
 
+import com.santiagocoffeeshop.dto.request.OrderItemRequestDTO;
 import com.santiagocoffeeshop.dto.request.OrderRequestDTO;
 import com.santiagocoffeeshop.dto.response.OrderItemResponseDTO;
 import com.santiagocoffeeshop.dto.response.OrderResponseDTO;
@@ -26,30 +27,28 @@ public class OrderService {
         newOrder.setTableNumber(order.getTableNumber());
 
         List<OrderItem> orderItems = order.getOrderItems().stream().map(orderItem -> {
-            OrderItem newOrderItem = new OrderItem();
             Beverage beverage = BeverageFactory.createBeverage(orderItem.getItem());
-            if (orderItem.getTopping() != null) {
-                beverage = BeverageFactory.createTopping(orderItem.getTopping(), beverage);
-            }
+
+            beverage = BeverageFactory.addToppings(beverage, orderItem.getToppings());
+
+            OrderItem newOrderItem = new OrderItem();
             newOrderItem.setPrice(beverage.getPrice());
             newOrderItem.setDescription(beverage.getDescription());
-
             return newOrderItem;
         }).toList();
 
         newOrder.setOrderItems(orderItems);
 
-        OrderResponseDTO orderResponseDTO = new OrderResponseDTO();
-        orderResponseDTO.setTableNumber(order.getTableNumber());
-        orderResponseDTO.setMessage("Thanks for your order!");
-        orderResponseDTO.setTotalPrice(orderItems.stream().mapToDouble(OrderItem::getPrice).sum());
-        orderResponseDTO.setOrderItems(orderItems.stream().map(orderItem -> {
-            OrderItemResponseDTO orderItemResponseDTO = new OrderItemResponseDTO();
-            orderItemResponseDTO.setDescription(orderItem.getDescription());
-            orderItemResponseDTO.setPrice(orderItem.getPrice());
-            return orderItemResponseDTO;
-        }).toList());
+        OrderResponseDTO responseDTO = new OrderResponseDTO();
+        responseDTO.setTableNumber(order.getTableNumber());
+        responseDTO.setMessage("Thanks for your order!");
+        responseDTO.setTotalPrice(orderItems.stream()
+                .mapToDouble(OrderItem::getPrice)
+                .sum());
+        responseDTO.setOrderItems(orderItems.stream()
+                .map(oi -> new OrderItemResponseDTO(oi.getPrice(), oi.getDescription()))
+                .toList());
 
-        return orderResponseDTO;
+        return responseDTO;
     }
 }
