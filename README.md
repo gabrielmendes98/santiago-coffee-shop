@@ -189,6 +189,4 @@ This project is provided under the [Apache License 2.0](https://www.apache.org/l
 
 ---
 
-### Happy Coding!
-
 Feel free to explore or modify the project! If you have any questions, open an issue or reach out to the maintainers. We hope this example helps you understand and implement the **Decorator Pattern** effectively in your own projects.
